@@ -3,7 +3,7 @@ import "./style.css";
 
 // Write TypeScript code!
 const appDiv: HTMLElement = document.getElementById("app");
-appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
+appDiv.innerHTML = ``;
 
 class LinkedList {
   head: Node;
@@ -18,11 +18,11 @@ class LinkedList {
 
     while (curr) {
       const str = `{ ${curr.value} } ${curr.next ? " => " : ""}`;
-      console.log(str);
       output += str;
       curr = curr.next;
     }
 
+    console.log(output);
     const p = document.createElement("p");
     p.append(output);
     appDiv.append(p);
@@ -58,6 +58,11 @@ class Node {
 }
 
 const list = new LinkedList([0, 1, 2, 3, 4].map(val => new Node(val)));
-list.reverseList();
-list.reverseList();
-list.reverseList();
+
+const button = document.createElement("button");
+button.append("REVERSE LIST");
+
+button.addEventListener("click", () => list.reverseList());
+appDiv.append(button);
+
+list.outputList();
